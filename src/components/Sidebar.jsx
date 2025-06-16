@@ -51,7 +51,7 @@ export default function Sidebar() {
 
         <ul className="nav flex-column w-100">
           <SidebarLink
-            to="/"
+            to="/home"
             icon={<FaHome />}
             label="Home"
             collapsed={collapsed}

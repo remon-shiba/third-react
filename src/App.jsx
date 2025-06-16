@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <Router>
