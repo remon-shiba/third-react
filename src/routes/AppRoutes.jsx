@@ -1,26 +1,47 @@
-import { Routes, Route } from 'react-router-dom';
-import Login from '../pages/Login';
-import Registration from '../pages/Register';
-import ForgotPassword from '../pages/ForgotPassword';
-import Home from '../pages/Home';
-import Dashboard from '../pages/Dashboard';
-import About from '../pages/About';
-import Sidebar from '../components/Sidebar';
+import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "../components/PrivateRoute";
 
-const AppRoutes = ({ setIsLoggedIn }) => {
+// Make sure to import all pages
+import Login from "../pages/Login";
+import Registration from "../pages/Register";
+import ForgotPassword from "../pages/ForgotPassword";
+import Dashboard from "../pages/Dashboard";
+import Home from "../pages/Home";
+import About from "../pages/About";
+
+const AppRoutes = ({ setIsLoggedIn, isLoggedIn }) => {
   return (
     <Routes>
       <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      
-      <Route element={<Sidebar />}>
-      <Route path="/home" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/about" element={<About />} />
-        
-      </Route>
+
+      {/* Protected Routes */}
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/home"
+        element={
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+            <Home />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/about"
+        element={
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+            <About />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };

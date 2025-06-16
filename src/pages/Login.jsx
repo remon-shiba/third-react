@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // 🔁 Add this
+import React, { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // 🛠️ Fixed import
 import logo from "../assets/coffee-cup.gif";
 import { toast } from "sonner";
+import TermsModal from "../components/Terms";
+import PrivacyModal from "../components/Privacy";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+  const termsRef = useRef(null);
+  const privacyRef = useRef(null);
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,11 +22,9 @@ const Login = () => {
     }
 
     // Do your login logic here (e.g., API call)
-    // If login successful:
-    setIsLoggedIn(true); // <-- Update login state
-    navigate("/dashboard"); // or any protected route
-
-    toast.success("Login successful!");
+    setIsLoggedIn(true); // ✅ Update state
+    toast.success("Login successful!"); // ✅ Show success message
+    navigate("/dashboard"); // ✅ Redirect to a protected route
   };
 
   return (
@@ -70,9 +73,10 @@ const Login = () => {
             </div>
           </div>
 
-          <div className="mb-3 text-end">
-            <Link to="/forgot-password" className="text-decoration-none small">
-              Password mo parang feelings niya — wala na.
+          <div className="mb-3 text-end small">
+            Password mo? Tumakas.{" "}
+            <Link to="/forgot-password" className="text-decoration-none ">
+              Tara, habulin!
             </Link>
           </div>
 
@@ -85,8 +89,7 @@ const Login = () => {
 
         <div className="mt-3 text-center">
           <small>
-            Wala ka pang account?{" "}
-            <Link to="/register">Baka ma-left out ka!</Link>
+            Huwag kang stranger, <Link to="/register">register na dito!</Link>
           </small>
         </div>
         <div className="mt-3 text-center">
@@ -96,16 +99,32 @@ const Login = () => {
           </small>{" "}
           <br />
           <small>
-            <Link to="/terms" className="text-decoration-none">
+            <Link
+              to="/terms"
+              className="text-decoration-none"
+              onClick={(e) => {
+                e.preventDefault();
+                termsRef.current.open();
+              }}
+            >
               Terms of Service
             </Link>{" "}
             |
-            <Link to="/privacy" className="text-decoration-none">
+            <Link
+              to="/privacy"
+              className="text-decoration-none"
+              onClick={(e) => {
+                e.preventDefault();
+                privacyRef.current.open();
+              }}
+            >
               {" "}
               Privacy Policy
             </Link>
           </small>
         </div>
+        <TermsModal ref={termsRef} />
+        <PrivacyModal ref={privacyRef} />
       </div>
     </div>
   );
