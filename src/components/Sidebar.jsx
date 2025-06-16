@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from "../assets/meteor-rain.gif";
 import {
   FaHome,
   FaTachometerAlt,
@@ -7,7 +8,8 @@ import {
   FaUserPlus,
   FaSignInAlt,
   FaBars,
-  FaReact, // Example logo icon
+  FaReact,
+  FaSignOutAlt, // Example logo icon
 } from 'react-icons/fa';
 
 export default function Sidebar() {
@@ -37,11 +39,12 @@ export default function Sidebar() {
           style={{
             height: '50px',
             width: '100%',
-            transition: 'opacity 0.3s ease',
+            transition: 'opacity 0.5s ease',
           }}
         >
-          <FaReact className="me-2" size={24} />
-          {!collapsed && <span className="fs-5 fw-bold">Momond</span>}
+          {/* <FaReact className="me-2" size={24} /> */}
+          <img className="me-2 border border-1 rounded" src={Logo} alt="logo" style={{ width: '25px', height: '25px' }} />
+          {!collapsed && <span className="fs-4 fw-bold">Momond</span>}
         </div>
 
         {/* Menu */}
@@ -50,7 +53,7 @@ export default function Sidebar() {
           <SidebarLink to="/dashboard" icon={<FaTachometerAlt />} label="Dashboard" collapsed={collapsed} />
           <SidebarLink to="/about" icon={<FaInfoCircle />} label="About" collapsed={collapsed} />
           <SidebarLink to="/register" icon={<FaUserPlus />} label="Register" collapsed={collapsed} />
-          <SidebarLink to="/login" icon={<FaSignInAlt />} label="Login" collapsed={collapsed} />
+          <SidebarLink to="/login" icon={<FaSignOutAlt />} label="Logout" collapsed={collapsed} />
         </ul>
       </div>
 

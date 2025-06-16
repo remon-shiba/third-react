@@ -16,6 +16,11 @@ const Login = () => {
       return;
     }
 
+    // Do your login logic here (e.g., API call)
+    // If login successful:
+    setIsLoggedIn(true); // <-- Update login state
+    navigate("/dashboard"); // or any protected route
+
     toast.success("Login successful!");
   };
 
@@ -27,7 +32,8 @@ const Login = () => {
             src={logo}
             alt="Logo"
             style={{ width: "64px", height: "64px" }}
-          /> Tah Kape!
+          />{" "}
+          Tah Kape!
         </div>
         <form onSubmit={handleLogin}>
           <div className="input-group mb-3">
@@ -66,7 +72,7 @@ const Login = () => {
 
           <div className="mb-3 text-end">
             <Link to="/forgot-password" className="text-decoration-none small">
-            Password mo parang feelings niya — wala na.
+              Password mo parang feelings niya — wala na.
             </Link>
           </div>
 
@@ -79,11 +85,16 @@ const Login = () => {
 
         <div className="mt-3 text-center">
           <small>
-          Wala ka pang account? <Link to="/register">Baka ma-left out ka!</Link>
+            Wala ka pang account?{" "}
+            <Link to="/register">Baka ma-left out ka!</Link>
           </small>
         </div>
         <div className="mt-3 text-center">
-          <small>Dev Momond @ {currentYear}<br /> By logging in, you agree to our</small> <br />
+          <small>
+            Dev Momond @ {currentYear}
+            <br /> By logging in, you agree to our
+          </small>{" "}
+          <br />
           <small>
             <Link to="/terms" className="text-decoration-none">
               Terms of Service

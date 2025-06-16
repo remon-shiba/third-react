@@ -1,22 +1,16 @@
-// src/App.jsx
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from "./pages/Login";
-import Registration from "./pages/Register";
-import ForgotPassword from "./pages/ForgotPassword";
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useState } from 'react';
 import Sidebar from './components/Sidebar';
+import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
-    <>
-      <Router>
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      {isLoggedIn && <Sidebar />}
+      <AppRoutes setIsLoggedIn={setIsLoggedIn} />
+    </Router>
   );
 };
 

@@ -1,0 +1,25 @@
+my-app/
+├── public/                   # Static files (e.g. favicon, robots.txt)
+│   └── ...
+├── src/                      # Source files
+│   ├── assets/               # Images, fonts, etc.
+│   ├── components/           # Reusable UI components
+│   ├── pages/                # Route-based page components
+│   ├── layouts/              # Layout components (e.g. sidebar, header)
+│   ├── routes/               # React Router config
+│   ├── hooks/                # Custom React hooks
+│   ├── services/             # API calls / external services
+│   ├── context/              # React context providers
+│   ├── utils/                # Helper functions/utilities
+│   ├── styles/               # Global styles or CSS/SCSS modules
+│   ├── App.jsx               # Root component
+│   ├── main.jsx              # Vite entry file
+│   └── vite-env.d.ts         # TypeScript env types (optional)
+├── .env                      # Environment variables
+├── .gitignore
+├── index.html                # HTML template used by Vite
+├── package.json
+├── postcss.config.js         # For Tailwind or PostCSS (if used)
+├── tailwind.config.js        # Tailwind config (if using Tailwind)
+├── vite.config.js            # Vite config
+└── README.md
