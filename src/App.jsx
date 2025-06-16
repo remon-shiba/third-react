@@ -1,16 +1,19 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
+import Sidebar from "./components/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
-import Sidebar from "./components/Sidebar"; // Optional: if you want sidebar conditionally
-import { Toaster } from "sonner"; // assuming you're using `sonner`
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // default to false
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      <AppRoutes isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <Toaster richColors position="top-center" />
+      <div className="d-flex">
+        {isLoggedIn && <Sidebar />} {/* Only show sidebar if logged in */}
+        <div className="flex-grow-1 p-4">
+          <AppRoutes isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        </div>
+      </div>
     </Router>
   );
 };

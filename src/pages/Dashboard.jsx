@@ -1,11 +1,8 @@
-import React from "react";
-import Sidebar from "../components/Sidebar";
-
 function Dashboard() {
   return (
     <div>
-      <Sidebar />
-      <h1>Dashboard Page</h1>
+      <h2>Dashboard Page</h2>
+      <p>This is where you can see the dashboard page.</p>
     </div>
   );
 }

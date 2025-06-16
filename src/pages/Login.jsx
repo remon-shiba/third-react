@@ -15,16 +15,22 @@ const Login = ({ setIsLoggedIn }) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    toast.dismiss();
 
     if (!email || !password) {
-      toast.error("Please fill in both fields");
+      toast.error("Please fill in both fields", { id: "login-error" });
       return;
     }
 
-    // Do your login logic here (e.g., API call)
-    setIsLoggedIn(true); // ✅ Update state
-    toast.success("Login successful!"); // ✅ Show success message
-    navigate("/dashboard"); // ✅ Redirect to a protected route
+    toast.loading("Logging in...", { id: "loginLoading" });
+
+    // Simulate API delay
+    setTimeout(() => {
+      toast.dismiss("loginLoading");
+      setIsLoggedIn(true);
+      toast.success("Login successful!", { id: "login-success" });
+      navigate("/dashboard");
+    }, 1500);
   };
 
   return (
