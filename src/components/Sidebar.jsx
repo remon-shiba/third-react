@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/meteor-rain.gif";
 import {
   FaHome,
   FaTachometerAlt,
   FaInfoCircle,
   FaUserPlus,
-  FaSignInAlt,
   FaBars,
-  FaReact,
   FaSignOutAlt, // Example logo icon
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -19,41 +17,69 @@ export default function Sidebar() {
 
   return (
     <div className="d-flex">
-      {/* Sidebar */}
       <div
         className="bg-dark text-white vh-100 d-flex flex-column align-items-start transition-sidebar"
         style={{
-          width: collapsed ? '60px' : '220px',
-          transition: 'width 0.3s ease',
-          overflowX: 'hidden',
+          width: collapsed ? "60px" : "220px",
+          transition: "width 0.3s ease",
+          overflowX: "hidden",
         }}
       >
-        {/* Toggle Button */}
-        <button className="btn btn-outline-light m-2 w-80" onClick={toggleSidebar}>
+        <button
+          className="btn btn-outline-light m-2 w-80"
+          onClick={toggleSidebar}
+        >
           <FaBars />
         </button>
 
-        {/* Logo */}
         <div
           className="d-flex align-items-center ps-3 pe-3 mb-3"
           style={{
-            height: '50px',
-            width: '100%',
-            transition: 'opacity 0.5s ease',
+            height: "50px",
+            width: "100%",
+            transition: "opacity 0.5s ease",
           }}
         >
-          {/* <FaReact className="me-2" size={24} /> */}
-          <img className="me-2 border border-1 rounded" src={Logo} alt="logo" style={{ width: '25px', height: '25px' }} />
+          <img
+            className="me-2 border border-1 rounded"
+            src={Logo}
+            alt="logo"
+            style={{ width: "25px", height: "25px" }}
+          />
           {!collapsed && <span className="fs-4 fw-bold">Momond</span>}
         </div>
 
-        {/* Menu */}
         <ul className="nav flex-column w-100">
-          <SidebarLink to="/" icon={<FaHome />} label="Home" collapsed={collapsed} />
-          <SidebarLink to="/dashboard" icon={<FaTachometerAlt />} label="Dashboard" collapsed={collapsed} />
-          <SidebarLink to="/about" icon={<FaInfoCircle />} label="About" collapsed={collapsed} />
-          <SidebarLink to="/register" icon={<FaUserPlus />} label="Register" collapsed={collapsed} />
-          <SidebarLink to="/login" icon={<FaSignOutAlt />} label="Logout" collapsed={collapsed} />
+          <SidebarLink
+            to="/"
+            icon={<FaHome />}
+            label="Home"
+            collapsed={collapsed}
+          />
+          <SidebarLink
+            to="/dashboard"
+            icon={<FaTachometerAlt />}
+            label="Dashboard"
+            collapsed={collapsed}
+          />
+          <SidebarLink
+            to="/about"
+            icon={<FaInfoCircle />}
+            label="About"
+            collapsed={collapsed}
+          />
+          <SidebarLink
+            to="/register"
+            icon={<FaUserPlus />}
+            label="Register"
+            collapsed={collapsed}
+          />
+          <SidebarLink
+            to="/login"
+            icon={<FaSignOutAlt />}
+            label="Logout"
+            collapsed={collapsed}
+          />
         </ul>
       </div>
 
@@ -72,10 +98,14 @@ function SidebarLink({ to, icon, label, collapsed }) {
       <Link
         to={to}
         className="nav-link text-white d-flex align-items-center"
-        style={{ whiteSpace: 'nowrap' }}
+        style={{ whiteSpace: "nowrap" }}
       >
-        <span className="me-2" style={{ fontSize: '1.2rem' }}>{icon}</span>
-        <span className={`sidebar-text ${collapsed ? 'd-none' : 'd-inline'}`}>{label}</span>
+        <span className="me-2" style={{ fontSize: "1.2rem" }}>
+          {icon}
+        </span>
+        <span className={`sidebar-text ${collapsed ? "d-none" : "d-inline"}`}>
+          {label}
+        </span>
       </Link>
     </li>
   );
