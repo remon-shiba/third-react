@@ -7,6 +7,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from "bootstrap";
 import { Toaster } from "sonner";
+import "./index.css";
 
 window.bootstrap = bootstrap;
 
